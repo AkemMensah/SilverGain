@@ -1,0 +1,21 @@
+{% extends "home.html" %}
+
+{% block title %}Product List - My E-commerce Site{% endblock %}
+
+{% block content %}
+<h1>Products</h1>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr 1fr 1fr">
+    {% for product in products %}
+    <div class="card" style="margin: 8px;">
+        <a href="{% url 'product_details' product.id %}" style="text-decoration: none;">
+            <img class="card-img-top" style="height: 208px;width:208px;border-radius: 8px;position: relative;"
+                src={{product.image.url}} alt="Card image cap">
+            <div class="card-body" style="font-size:12px;text-overflow: ellipsis;width: 100%;white-space:nowrap;overflow: hidden;">
+                <h5 class="card-title" style="color:black;font-weight: 400;">{{product.name}}</h5>
+                <h2 style="color:red;font-size: 20px;"><span>$</span>{{product.price}}</h2>
+            </div>
+        </a>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
