@@ -20,7 +20,7 @@ class Products (models.Model):
     @property
     def average_review(self):
         average_rating = self.reviews.aggregate(average_rating=Avg('stars'))['average_rating']
-        return f'{average_rating:.1f}'
+        return f'{average_rating:.1f}' if average_rating else ""
     
     @staticmethod
     def get_products_by_id(ids):
