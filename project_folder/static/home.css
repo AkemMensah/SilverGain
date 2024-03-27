@@ -1,4 +1,4 @@
-
+/* Navbar all inherit from */
 .main-navbar{
     border-bottom: 1px solid #ccc;
 }
@@ -6,6 +6,7 @@
     /* background-color: #2874f0; */
     /* background-color: rgb(159, 67, 17); */
     background-color: rgb(210, 39, 30);
+    /* background-color: black; */
     padding-top: 10px;
     padding-bottom: 10px;
 }
@@ -47,6 +48,10 @@
     color: #000;
     font-size: 15px;
 }
+/* .nav-item:hover{
+    font-weight: bold;
+    background-color: red;
+} */
 
 @media only screen and (max-width: 600px) {
     .main-navbar .top-navbar .nav-link{
@@ -54,3 +59,48 @@
         padding: 8px 10px;
     }
 }
+
+
+/* Landing page */
+.legacy{
+    display: flex;
+    flex-direction: row;
+}
+
+
+/* Slider 1 */
+.carousel-item .custom-carousel-content{
+    width: 50%;
+    transform: translate(0%, -10%);
+}
+.custom-carousel-content{
+    text-align: start;
+}
+.custom-carousel-content h1{
+    font-size: 40px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 30px;
+}
+.custom-carousel-content h1 span{
+    color: #fbff00;
+}
+.custom-carousel-content p{
+    font-size: 18px;
+    font-weight: 400;
+    color: #fff;
+    margin-bottom: 30px;
+}
+.custom-carousel-content .btn-slider{
+    border: 1px solid #fff;
+    border-radius: 0px;
+    padding: 8px 26px;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+.nav-item :hover{
+    font-weight: bold;
+}
+
