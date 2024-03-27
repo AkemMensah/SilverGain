@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+</head>
+
+<body style="background-color: aliceblue;">
+    <div class="login" style="display: flex;flex-direction: column;align-items: center;justify-content: center;margin-top: 100px;">
+        <h2>Log In</h2>
+        <form method="post" style="font-size: 25px;">
+            {% csrf_token %}
+            {{form.as_p}}
+            <button type="submit" style="width: 150px;height: 40px;margin: 30px 0 0 70px;">
+                Log In
+            </button>
+        </form>
+    </div>
+</body>
+
+</html>
