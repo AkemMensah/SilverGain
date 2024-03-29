@@ -22,6 +22,8 @@ from store.views.cart import add_to_cart
 from store.views.landing_page import landing_page
 from store.views.user_registration import user_registration
 from store.views.user_login import user_login
+from store.views.logout import user_logout
+from store.views.payment import payment
 from django.urls import path
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf.urls.static import static
@@ -33,12 +35,13 @@ urlpatterns = [
     path('products/',product_list, name='products'),
     path('user-registration/',user_registration, name='user_registration'),
     path('user-login/',user_login,name="user_login"),
+    path('user_logout/',user_logout,name='user_logout'),
     path('accounts/login/',user_login,name="user_login"),
+    path('payment/', payment,name="payment"),
     path('products/<int:product_id>/',product_details, name='product_details'),
     path('', Home_view.as_view(),name='store'),
     path('store', store, name='store'),
     path('admin/', admin.site.urls),
-    
 ]
 
 urlpatterns+=staticfiles_urlpatterns()
