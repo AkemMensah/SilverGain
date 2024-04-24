@@ -6,5 +6,7 @@ from store.models import Cart
 # @login_required
 def product_list(request):
 		products = Products.objects.all()
-		cart_count = Cart.objects.filter(user=request.user).count()
-		return render(request, 'product_list.html',{'products':products,'cart_count':cart_count})
+		user = request.user if request.user.is_authenticated else None
+		
+		cart_count = Cart.objects.filter(user=request.user).count() if request.user.is_authenticated else 0
+		return render(request, 'product_list.html',{'products':products,'cart_count':cart_count,"user":user})

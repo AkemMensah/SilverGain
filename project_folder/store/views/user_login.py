@@ -20,7 +20,7 @@ def user_login(request):
             if user:
                 login(request,user)
                 next_path = request.session.get('next','/')
-                print(request.session)
+                # print(request.session)
                 return redirect(next_path)
             else:
                 print("Invalid email or password")

@@ -6,4 +6,5 @@ def landing_page(request):
     product1 = Products.objects.order_by('?').first()
     product2 = Products.objects.order_by('?').first()
     products = Products.objects.all()
-    return render(request, 'landing_page.html',{"product1":product1,"product2":product2,"products":products})
+    user = request.user if request.user.is_authenticated else None
+    return render(request, 'landing_page.html',{"product1":product1,"product2":product2,"products":products,"user":user})

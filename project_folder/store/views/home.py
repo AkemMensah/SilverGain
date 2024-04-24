@@ -69,7 +69,11 @@ def store(request):
 	product2 = Products.objects.order_by('?').first()
 	product3 = Products.objects.order_by('?').first()
 	data = {}
-	cart_count = Cart.objects.filter(user=request.user).count()
+	print(request.user)
+	cart_count = 0
+	if (request.user.is_authenticated):
+		cart_count = Cart.objects.filter(user=request.user).count()
+
 
 	# Add the retrieved products to the data dictionary
 	data['products'] = products
@@ -79,7 +83,7 @@ def store(request):
 	data['cart_count'] = cart_count if cart_count else 0
 	# Add the retrieved categories to the data dictionary
 	data['categories'] = categories
-	data['user'] = request.user
+	data['user'] = request.user if request.user.is_authenticated else None
 
 	print('you are : ', request.session.get('email'))
 	# render the 'home.html' template with the data dictionary.
