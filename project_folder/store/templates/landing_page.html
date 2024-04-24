@@ -3,7 +3,7 @@
 <div>
     {% block content %}
     <div class="banner"
-        style="background-color: red; height: 70vh;width: 100%;display: grid;grid-template-columns: 1fr 1fr;align-items: center;">
+        style="background-color: #ef7c0f; height: 70vh;width: 100%;display: grid;grid-template-columns: 1fr 1fr;align-items: center;">
         <div class="promo" style="margin: 30px 30px;display:block;align-content: center;">
             <p class="deadline" style="color: rgb(247, 246, 247);font-size: xx-large;margin-top: 30px;">Sale ends: April
                 1,
@@ -613,11 +613,11 @@
     {% endblock %}
 </div>
 
-<div>
-    {% block landingProducts %}
 
+{% block landingProducts %}
+<div class="categories" style="display: flex; flex-direction: column;">
     <h1>Products</h1>
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr 1fr 1fr;width: fit-content;">
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr 1fr 1fr;">
         {% for product in products %}
         <div class="card" style="margin: 8px;">
             <a href="{% url 'product_details' product.id %}" style="text-decoration: none;">
@@ -631,7 +631,6 @@
             </a>
         </div>
         {% endfor %}
-
-
-        {% endblock%}
     </div>
+</div>
+{% endblock%}

@@ -1,6 +1,8 @@
-{% extends "home.html" %}
+{% extends "base.html" %}
+
 
 {% block content %}
-<p style="width:100%;text-align: center;">Sorry, the page you requested cannot be found</p>
+<div class="error_mssg" style="height: 300px;font-size: 30px;"></div>
+<p style="width:100%;text-align: center;">{{error_message}}</p>
+</div>
 {% endblock %}
-

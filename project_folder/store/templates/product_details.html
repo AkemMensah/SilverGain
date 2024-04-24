@@ -1,4 +1,4 @@
-{% extends 'home.html' %}
+{% extends 'base.html' %}
 
 {% block content%}
 <header style="margin: 30px 120px;">
@@ -76,7 +76,7 @@
                     <p>
                         {{Product.summary}}
                     </p>
-                    <a href="#" class="btn btn-warning shadow-0"> Buy now </a>
+                    <a href="{% url 'payment' %}?product_id={{product.id}}&quantity={{quantity}}" class="btn btn-warning shadow-0"> Buy now </a>
                     <a href="{%url 'add_to_cart' product.id %}" class="btn btn-primary shadow-0"> <i
                             class="me-1 fa fa-shopping-basket"></i> Add to cart </a>
                     <a href="#" class="btn btn-light border border-secondary py-2 icon-hover px-3"> <i

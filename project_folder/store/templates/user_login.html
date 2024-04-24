@@ -7,16 +7,22 @@
     <title>Login Form</title>
 </head>
 
-<body style="background-color: aliceblue;">
-    <div class="login" style="display: flex;flex-direction: column;align-items: center;justify-content: center;margin-top: 100px;">
+<body style="display: flex;flex-direction: column;justify-content: center;align-items: center;">
+    <div class="login" style="display: flex;flex-direction: column;align-items: center;justify-content: center;background-color: aliceblue;width: 500px;height: 400px;">
         <h2>Log In</h2>
-        <form method="post" style="font-size: 25px;">
+        <form method="post" style="font-size: 25px;background-color: white;border-radius: 0.5rem;">
             {% csrf_token %}
             {{form.as_p}}
-            <button type="submit" style="width: 150px;height: 40px;margin: 30px 0 0 70px;">
+            <button type="submit" style="width: 150px;height: 40px;margin: 30px 0 0 70px;background-color: aquamarine;border-radius: 1rem;">
                 Log In
             </button>
         </form>
+    </div>
+    <div class='signUp' style='width:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;margin:20px;'>
+        <p>Don't have an account?</p>
+        <a href="{% url 'user_registration' %}"  style="width: 130px;height: 40px;border:1.5px solid black;text-decoration: none;font-size: 25px;color:black;display: flex;flex-direction: column;align-items: center;justify-content: center;background-color: pink;border-radius: 0.5rem;">
+            Sign Up
+        </a>
     </div>
 </body>
 
