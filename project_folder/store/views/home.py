@@ -7,6 +7,7 @@ from django.views import View
 
 
 # Create your views here.
+
 # @login_required
 class Home_view(View):
 
@@ -45,7 +46,9 @@ class Home_view(View):
 	def get(self, request):
 		# print()
 		# Retrieve the full path of the current request, including the query parameters
-		return HttpResponseRedirect(f'/store{request.get_full_path()[1:]}')
+		# return HttpResponseRedirect(f'/store{request.get_full_path()[1:]}')
+		return HttpResponseRedirect(f'/home{request.get_full_path()[1:]}')
+
 	
 def store(request):
 	# get cart for session
