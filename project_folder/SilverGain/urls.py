@@ -31,7 +31,6 @@ from django.conf import settings
 
 urlpatterns = [
     path('add_to_cart/<int:product_id>/',add_to_cart,name='add_to_cart'),
-    path('landing_page/',landing_page,name='landing_page'),
     path('products/',product_list, name='products'),
     path('user-registration/',user_registration, name='user_registration'),
     path('user-login/',user_login,name="user_login"),
@@ -39,8 +38,10 @@ urlpatterns = [
     path('accounts/login/',user_login,name="user_login"),
     path('payment/', payment,name="payment"),
     path('products/<int:product_id>/',product_details, name='product_details'),
-    path('', Home_view.as_view(),name='store'),
-    path('store', store, name='store'),
+    # path('', Home_view.as_view(),name='store'),
+    # path('store', store, name='store'),
+    path('home/',store,name="home"),
+    path('',landing_page,name='landing_page'),
     path('admin/', admin.site.urls),
 ]
 
