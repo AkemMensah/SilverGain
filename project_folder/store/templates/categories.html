@@ -1,0 +1,523 @@
+
+<style>
+    .marquee-container {
+        width: 100%;
+        white-space: nowrap;
+        box-sizing: border-box;
+        animation: marquee 20s linear infinite;
+
+        display: flex;
+        flex-direction: row;
+        margin-left: 30px;
+    }
+    .marquee-content {
+        display: inline-block;
+        margin-left: 2rem;
+        text-wrap: wrap;
+    }
+    .marquee-item {
+        display: inline-block;
+    }
+    .marquee-container:hover {
+    animation-play-state: paused;
+    }
+    
+    @keyframes marquee {
+        from {
+            transform: translateX(0);
+        }
+        to {
+            transform: translateX(-100%);
+        }
+    }
+</style>
+<!-- product categories -->
+<div class="categories" style="height: 350px;display: flex;flex-direction: column;margin: 20px 0;background-color: rgb(245, 240, 241);">
+    <h2>Shop By Categories</h2>
+    <div class="category-items marquee-container" >
+        <div class=" marquee-content " style="outline: none; width: 160px;">
+            <a title="Home & Garden" class=" home-dot-element" href="#" target="_blank"
+                style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
+                <div class=" industry-item"
+                    style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
+                    <i class="fa fa-home" style="font-size: xx-large;"></i>
+                    <div class="industry-name">
+                        <span>Home & Garden</span>
+                    </div>
+                </div>
+            </a>
+            <a title="Sports & Entertainment" class=" home-dot-element" href="#" target="_blank"
+                style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
+                <div class="industry-item "
+                    style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
+                    <i class="fa fa-soccer-ball-o" style="font-size: xx-large;"></i>
+                    <div class="industry-name">
+                        <span>Sports & Entertainment</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="marquee-content " style="outline: none;width: 150px;">
+            <a title="Home & Garden" class=" home-dot-element" href="#" target="_blank"
+                style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
+                <div class=" industry-item"
+                    style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
+                    <i class="fa fa-chain" style="font-size: xx-large;"></i>
+                    <div class="industry-name">
+                        <span>Industry & Machinery</span>
+                    </div>
+                </div>
+            </a>
+            <a title="Sports & Entertainment" class=" home-dot-element" href="#" target="_blank"
+                style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
+                <div class=" industry-item"
+                    style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
+                    <i class="fa fa-paint-brush" style="font-size: xx-large;"></i>
+                    <div class="industry-name">
+                        <span>Beauty</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="marquee-content " style="outline: none;width: 150px;">
+            <a title="Home & Garden" class=" home-dot-element" href="#" target="_blank"
+                style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
+                <div class=" industry-item"
+                    style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
+                    <i class="fa fa-gift" style="font-size: xx-large;"></i>
+                    <div class="industry-name">
+                        <span>Packaging & Printing</span>
+                    </div>
+                </div>
+            </a>
+            <a title="Sports & Entertainment" class=" home-dot-element" href="#" target="_blank"
+                style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
+                <div class=" industry-item"
+                    style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
+                    <i class="fa fa-child" style="font-size: xx-large;"></i>
+                    <div class="industry-name">
+                        <span>Mother,Kids & Toys</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="marquee-content " style="outline: none;width: 150px;">
+            <a title="Home & Garden" class=" home-dot-element" href="#" target="_blank"
+                style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
+                <div class=" industry-item"
+                    style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
+                    <i class="fa fa-diamond" style="font-size: xx-large;"></i>
+                    <div class="industry-name">
+                        <span>Jewelry,Watches & Accessorries</span>
+                    </div>
+                </div>
+            </a>
+            <a title="Sports & Entertainment" class=" home-dot-element" href="#" target="_blank"
+                style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
+                <div class=" industry-item"
+                    style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
+                    <i class="fas fa-shoe-prints" style="font-size: xx-large;"></i>
+                    <div class="industry-name">
+                        <span>Shoes & Accessorries</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="marquee-content " style="outline: none;width: 150px;">
+            <a title="Home & Garden" class=" home-dot-element" href="#" target="_blank"
+                style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
+                <div class=" industry-item"
+                    style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
+                    <i class="fa fa-car" style="font-size: xx-large;"></i>
+                    <div class="industry-name">
+                        <span>Vehicle Parts & Accessorries</span>
+                    </div>
+                </div>
+            </a>
+            <a title="Sports & Entertainment" class=" home-dot-element" href="#" target="_blank"
+                style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
+                <div class=" industry-item"
+                    style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
+                    <i class="fas fa-chair" style="font-size: xx-large;"></i>
+                    <div class="industry-name">
+                        <span>Furniture</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="marquee-content  " style="outline: none;width: 150px;">
+            <a title="Home & Garden" class=" home-dot-element" href="#" target="_blank"
+                style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
+                <div class=" industry-item"
+                    style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
+                    <i class="fas fa-tools" style="font-size: xx-large;"></i>
+                    <div class="industry-name">
+                        <span>Tools & Hardware</span>
+                    </div>
+                </div>
+            </a>
+            <a title="Sports & Entertainment" class=" home-dot-element" href="#" target="_blank"
+                style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
+                <div class=" industry-item"
+                    style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
+                    <i class="fas fa-suitcase" style="font-size: xx-large;"></i>
+                    <div class="industry-name">
+                        <span>Luggage,Bags & Cases</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="marquee-content  " style="outline: none;width: 150px;">
+            <a title="Home & Garden" class=" home-dot-element" href="#" target="_blank"
+                style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
+                <div class=" industry-item"
+                    style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
+                    <i class="fa fa-television" style="font-size: xx-large;"></i>
+                    <div class="industry-name">
+                        <span>Home Appliances</span>
+                    </div>
+                </div>
+            </a>
+            <a title="Sports & Entertainment" class=" home-dot-element" href="#" target="_blank"
+                style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
+                <div class=" industry-item"
+                    style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
+                    <i class="fas fa-home" style="font-size: xx-large;"></i>
+                    <div class="industry-name">
+                        <span>Constructions & Real Estate</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="marquee-content  " style="outline: none;width: 150px;">
+            <a title="Home & Garden" class=" home-dot-element" href="#" target="_blank"
+                style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
+                <div class=" industry-item"
+                    style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
+                    <i class="fa fa-handshake-o" style="font-size: xx-large;"></i>
+                    <div class="industry-name">
+                        <span>Commercial Service Equipment</span>
+                    </div>
+                </div>
+            </a>
+            <a title="Sports & Entertainment" class=" home-dot-element" href="#" target="_blank"
+                style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
+                <div class=" industry-item"
+                    style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
+                    <i class="fa fa-gear" style="font-size: xx-large;"></i>
+                    <div class="industry-name">
+                        <span>Vehicle Electronics & Accessories</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="marquee-content " style="outline: none;width: 150px;">
+            <a title="Home & Garden" class=" home-dot-element" href="#" target="_blank"
+                style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
+                <div class=" industry-item"
+                    style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
+                    <i class="fas fa-spray-can" style="font-size: xx-large;"></i>
+                    <div class="industry-name">
+                        <span>Personal Car & HouseHold cleaning</span>
+                    </div>
+                </div>
+            </a>
+            <a title="Sports & Entertainment" class=" home-dot-element" href="#" target="_blank"
+                style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
+                <div class=" industry-item"
+                    style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
+                    <i class="fa fa-truck" style="font-size: xx-large;"></i>
+                    <div class="industry-name">
+                        <span>Vehicle and Tranportation</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="marquee-content " style="outline: none;width: 150px;">
+            <a title="Home & Garden" class=" home-dot-element" href="#" target="_blank"
+                style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
+                <div class=" industry-item"
+                    style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
+                    <i class="fa fa-lightbulb" style="font-size: xx-large;"></i>
+                    <div class="industry-name">
+                        <span>Lights & Lightening</span>
+                    </div>
+                </div>
+            </a>
+            <a title="Sports & Entertainment" class=" home-dot-element" href="#" target="_blank"
+                style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
+                <div class=" industry-item"
+                    style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
+                    <i class="fa fa-gift style=" font-size: xx-large;"></i>
+                    <div class="industry-name">
+                        <span>Gifts & Cafts</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="marquee-content " style="outline: none;width: 150px;">
+            <a title="Home & Garden" class=" home-dot-element" href="#" target="_blank"
+                style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
+                <div class=" industry-item"
+                    style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
+                    <i class="fas fa-notes-medical" style="font-size: xx-large;"></i>
+                    <div class="industry-name">
+                        <span>Health Care</span>
+                    </div>
+                </div>
+            </a>
+            <a title="Sports & Entertainment" class=" home-dot-element" href="#" target="_blank"
+                style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
+                <div class=" industry-item"
+                    style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
+                    <i class="fas fa-plug" style="font-size: xx-large;"></i>
+                    <div class="industry-name">
+                        <span>Electrical Equipment & Supplies</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="marquee-content " style="outline: none;width: 150px;">
+            <a title="Home & Garden" class=" home-dot-element" href="#" target="_blank"
+                style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
+                <div class=" industry-item"
+                    style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
+                    <i class="fas fa-sun" style="font-size: xx-large;"></i>
+                    <div class="industry-name">
+                        <span>Renewable Energy</span>
+                    </div>
+                </div>
+            </a>
+            <a title="Sports & Entertainment" class=" home-dot-element" href="#" target="_blank"
+                style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
+                <div class=" industry-item"
+                    style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
+                    <i class="fas fa-print" style="font-size: xx-large;"></i>
+                    <div class="industry-name">
+                        <span>School & Office Supplies</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="marquee-content " style="outline: none;width: 150px;">
+            <a title="Home & Garden" class=" home-dot-element" href="#" target="_blank"
+                style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
+                <div class=" industry-item"
+                    style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
+                    <i class="fa fa-binoculars" style="font-size: xx-large;"></i>
+                    <div class="industry-name">
+                        <span>Construction & Building Mechinery</span>
+                    </div>
+                </div>
+            </a>
+            <a title="Sports & Entertainment" class=" home-dot-element" href="#" target="_blank"
+                style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
+                <div class=" industry-item"
+                    style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
+                    <i class="fa fa-soccer-ball-o" style="font-size: xx-large;"></i>
+                    <div class="industry-name">
+                        <span>Sports & Entertainment</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="marquee-content " style="outline: none;width: 150px;">
+            <a title="Home & Garden" class=" home-dot-element" href="#" target="_blank"
+                style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
+                <div class=" industry-item"
+                    style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
+                    <i class="fa-thin fa-car-battery" style="font-size: xx-large;"></i>
+                    <div class="industry-name">
+                        <span>Electtronic Components & Telecommunicatin</span>
+                    </div>
+                </div>
+            </a>
+            <a title="Sports & Entertainment" class=" home-dot-element" href="#" target="_blank"
+                style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
+                <div class=" industry-item"
+                    style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
+                    <i class="fas fa-mug-hot" style="font-size: xx-large;"></i>
+                    <div class="industry-name">
+                        <span>Food & Beverage</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="marquee-content " style="outline: none;width: 150px;">
+            <a title="Home & Garden" class=" home-dot-element" href="#" target="_blank"
+                style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
+                <div class=" industry-item"
+                    style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
+                    <i class="fa fa-home" style="font-size: xx-large;"></i>
+                    <div class="industry-name">
+                        <span>Home & Garden</span>
+                    </div>
+                </div>
+            </a>
+            <a title="Sports & Entertainment" class=" home-dot-element" href="#" target="_blank"
+                style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
+                <div class=" industry-item"
+                    style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
+                    <i class="fa fa-soccer-ball-o" style="font-size: xx-large;"></i>
+                    <div class="industry-name">
+                        <span>Sports & Entertainment</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="marquee-content " style="outline: none;width: 150px;">
+            <a title="Home & Garden" class=" home-dot-element" href="#" target="_blank"
+                style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
+                <div class=" industry-item"
+                    style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
+                    <i class="fa fa-home" style="font-size: xx-large;"></i>
+                    <div class="industry-name">
+                        <span>Home & Garden</span>
+                    </div>
+                </div>
+            </a>
+            <a title="Sports & Entertainment" class=" home-dot-element" href="#" target="_blank"
+                style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
+                <div class=" industry-item"
+                    style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
+                    <i class="fa fa-soccer-ball-o" style="font-size: xx-large;"></i>
+                    <div class="industry-name">
+                        <span>Sports & Entertainment</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="marquee-content " style="outline: none;width: 150px;">
+            <a title="Home & Garden" class=" home-dot-element" href="#" target="_blank"
+                style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
+                <div class=" industry-item"
+                    style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
+                    <i class="fa fa-home" style="font-size: xx-large;"></i>
+                    <div class="industry-name">
+                        <span>Home & Garden</span>
+                    </div>
+                </div>
+            </a>
+            <a title="Sports & Entertainment" class=" home-dot-element" href="#" target="_blank"
+                style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
+                <div class=" industry-item"
+                    style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
+                    <i class="fa fa-soccer-ball-o" style="font-size: xx-large;"></i>
+                    <div class="industry-name">
+                        <span>Sports & Entertainment</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class=" " style="outline: none;width: 150px;">
+            <a title="Home & Garden" class=" home-dot-element" href="#" target="_blank"
+                style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
+                <div class=" industry-item"
+                    style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
+                    <i class="fa fa-home" style="font-size: xx-large;"></i>
+                    <div class="industry-name">
+                        <span>Home & Garden</span>
+                    </div>
+                </div>
+            </a>
+            <a title="Sports & Entertainment" class=" home-dot-element" href="#" target="_blank"
+                style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
+                <div class=" industry-item"
+                    style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
+                    <i class="fa fa-soccer-ball-o" style="font-size: xx-large;"></i>
+                    <div class="industry-name">
+                        <span>Sports & Entertainment</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="marquee-content " style="outline: none;width: 150px;">
+            <a title="Home & Garden" class=" home-dot-element" href="#" target="_blank"
+                style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
+                <div class=" industry-item"
+                    style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
+                    <i class="fa fa-home" style="font-size: xx-large;"></i>
+                    <div class="industry-name">
+                        <span>Home & Garden</span>
+                    </div>
+                </div>
+            </a>
+            <a title="Sports & Entertainment" class=" home-dot-element" href="#" target="_blank"
+                style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
+                <div class=" industry-item"
+                    style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
+                    <i class="fa fa-soccer-ball-o" style="font-size: xx-large;"></i>
+                    <div class="industry-name">
+                        <span>Sports & Entertainment</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="marquee-content " style="outline: none;width: 150px;">
+            <a title="Home & Garden" class=" home-dot-element" href="#" target="_blank"
+                style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
+                <div class=" industry-item"
+                    style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
+                    <i class="fa fa-home" style="font-size: xx-large;"></i>
+                    <div class="industry-name">
+                        <span>Home & Garden</span>
+                    </div>
+                </div>
+            </a>
+            <a title="Sports & Entertainment" class=" home-dot-element" href="#" target="_blank"
+                style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
+                <div class=" industry-item"
+                    style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
+                    <i class="fa fa-soccer-ball-o" style="font-size: xx-large;"></i>
+                    <div class="industry-name">
+                        <span>Sports & Entertainment</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="marquee-content " style="outline: none;width: 150px;">
+            <a title="Home & Garden" class=" home-dot-element" href="#" target="_blank"
+                style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
+                <div class=" industry-item"
+                    style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
+                    <i class="fa fa-home" style="font-size: xx-large;"></i>
+                    <div class="industry-name">
+                        <span>Home & Garden</span>
+                    </div>
+                </div>
+            </a>
+            <a title="Sports & Entertainment" class=" home-dot-element" href="#" target="_blank"
+                style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
+                <div class=" industry-item"
+                    style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
+                    <i class="fa fa-soccer-ball-o" style="font-size: xx-large;"></i>
+                    <div class="industry-name">
+                        <span>Sports & Entertainment</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="marquee-content " style="outline: none;width: 150px;">
+            <a title="Home & Garden" class=" home-dot-element" href="#" target="_blank"
+                style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
+                <div class=" industry-item"
+                    style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
+                    <i class="fa fa-home" style="font-size: xx-large;"></i>
+                    <div class="industry-name">
+                        <span>Home & Garden</span>
+                    </div>
+                </div>
+            </a>
+            <a title="Sports & Entertainment" class=" home-dot-element" href="#" target="_blank"
+                style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
+                <div class=" industry-item"
+                    style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
+                    <i class="fa fa-soccer-ball-o" style="font-size: xx-large;"></i>
+                    <div class="industry-name">
+                        <span>Sports & Entertainment</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>

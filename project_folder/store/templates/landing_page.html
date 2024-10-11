@@ -1,19 +1,22 @@
 {% extends "base.html" %}
 
+{% load static %}
+
+
+{% block content %}
 <div>
-    {% block content %}
     <div class="banner"
         style="background-color: #ef7c0f; height: 70vh;width: 100%;display: grid;grid-template-columns: 1fr 1fr;align-items: center;">
         <div class="promo" style="margin: 30px 30px;display:block;align-content: center;">
-            <p class="deadline" style="color: rgb(247, 246, 247);font-size: xx-large;margin-top: 30px;">Sale ends: April
-                1,
+            <p class="deadline" style="color: rgb(247, 246, 247);font-size: xx-large;margin-top: 30px;">Sale ends: December
+                31,
                 06:59 (GMT)
             </p>
             <div class="discount" style="color: white;font-size: xx-large;margin-top: 50px;">
-                <h1 style="font-size: 60px;">Up to 70% off</h1>
+                <h1 style="font-size: 60px;">Up to 40% off</h1>
                 <p>Explore your fave deals now!</p>
             </div>
-            <div class="items"
+            <!-- <div class="items"
                 style="display:flex;flex-direction: row;align-items: center;background-color: rgb(249, 235, 50);border-radius: 2rem;min-height: 120px;width:400px;margin-top: 50px;">
                 <a data-fslightbox="mygalley" class="rounded-4" target="_blank" data-type="image"
                     href={{product1.image.url}} style="margin-left:10px;">
@@ -28,60 +31,114 @@
                 <a href="{% url 'home' %}" style="margin-left:20px;font-size: 30px;color:red">
                     <p st>Shop Now <span><i class="fa fa-arrow-right"></i></span></p>
                 </a>
+            </div> -->
+            
+            <div class="items"
+                style="display:flex;flex-direction: row;align-items: center;background-color: rgb(249, 235, 50);border-radius: 2rem;min-height: 120px;width:400px;margin-top: 50px;">
+    
+                <!-- Product 1 -->
+                <a data-fslightbox="mygalley" class="rounded-4" target="_blank" data-type="image"
+                    href="{% if product1.image_url %}{{ product1.image_url }}{% else %}{{ product1.image_file.url }}{% endif %}" style="margin-left:10px;">
+                    <img style="width: 80px; height: 80px; margin: auto;" class="rounded-4 fit"
+                        src="{% if product1.image_url %}{{ product1.image_url }}{% else %}{{ product1.image_file.url }}{% endif %}" />
+                </a>
+
+                <!-- Product 2 -->
+                <a data-fslightbox="mygalley" class="rounded-4" target="_blank" data-type="image"
+                    href="{% if product2.image_url %}{{ product2.image_url }}{% else %}{{ product2.image_file.url }}{% endif %}" style="margin-left:10px;">
+                    <img style="width: 80px; height: 80px; margin: auto;" class="rounded-4 fit"
+                        src="{% if product2.image_url %}{{ product2.image_url }}{% else %}{{ product2.image_file.url }}{% endif %}" />
+                </a>
+
+                <!-- Shop Now Button -->
+                <a href="{% url 'home' %}" style="margin-left:20px;font-size: 30px;color:red">
+                    <p>Shop Now <span><i class="fa fa-arrow-right"></i></span></p>
+                </a>
             </div>
+
         </div>
 
-        <div class="occasion" style="height: 100%;">
+        <!-- occasional sales -->
+        <style>
+        .occasion {
+            height: 100%;
+            background-color: antiquewhite;
+        }
+        .occasion h2{
+            text-align: center;
+            font-style: italic;
+            font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+        
+        /* Grid container for the products */
+        .occasion-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 5px; 
+            margin-top: 30px;
+            /* background-color: blue; */
+        }
+        
+        /* Specific styling for links */
+        .product-link {
+            /* width: 50%; */
+            margin: 0;
+            /* flex-grow: 1; */
+            /* background-color: black; */
+            text-decoration: none;
+        }
+        /* Styling for each product grid */
+        .product-card {
+            /* border: 1px solid burlywood;  */
+            padding-top: 25px; 
+            display: flex;
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center;
+            height: 200px; 
+            /* width: 50%; */
+            /* overflow: hidden; */
+            /* background-color: green; */
+        }
+        
+        /* Styling for product images */
+        .product-image {
+            width: 220px; 
+            height: 150px; 
+            object-fit: cover; 
+        }
+        
+        
+        
+        /* Styling for product prices */
+        .product-price {
+            color: red;
+            font-size: xx-large;
+            margin-top: 10px;
+        }
+        </style>        
+        <div class="occasion">
             <h2>Anniversary Sale</h2>
-            <div style="height: 100%;display:flex;flex-direction: row;margin-top: 30px;">
-                <div class="card" style="margin: 8px;height: 80%;width: 40%;display: flex;flex-direction: column;">
-                    <div
-                        style="display: grid;grid-template-columns: 3fr 1fr;border: 1px solid burlywood;margin-top: 30px;">
-                        <a data-fslightbox="mygalley" class="rounded-4" target="_blank" data-type="image"
-                            href={{product1.image.url}} style="margin-left:10px;">
-                            <img style="width: 70%; height: 150px; margin: auto;" class="rounded-4 fit"
-                                src={{product1.image.url}} />
-                        </a>
-                        <p style="color: red;font-size: xx-large;position:relative;bottom: -50%;">{{product2.price}}</p>
-
+            <div class="occasion-container">
+                {% for product in products|slice:":4" %}  <!-- Limit to the first 4 products -->
+                <a data-fslightbox="mygalley" class="product-link rounded-4" target="_blank" data-type="image"
+                   href="{% if product.image_url %}{{ product.image_url }}{% else %}{{ product.image_file.url }}{% endif %}">
+                    <div class="product-card">
+                        <img class="product-image rounded-4 fit"
+                             src="{% if product.image_url %}{{ product.image_url }}{% else %}{{ product.image_file.url }}{% endif %}" />
+                        <p class="product-price">GHS{{ product.price }}</p>
                     </div>
-                    <div
-                        style="display: grid;grid-template-columns: 3fr 1fr;border: 1px solid burlywood;margin-top: 30px;">
-                        <a data-fslightbox="mygalley" class="rounded-4" target="_blank" data-type="image"
-                            href={{product2.image.url}} style="margin-left:10px;">
-                            <img style="width: 70%; height: 150px; margin: auto;" class="rounded-4 fit"
-                                src={{product2.image.url}} />
-                        </a>
-                        <p style="color: red;font-size: xx-large;position:relative;bottom: -50%;">{{product2.price}}</p>
-                    </div>
-                </div>
-                <div class="card" style="margin: 8px;height: 80%;width: 40%;display: flex;flex-direction: column;">
-
-                    <div
-                        style="display: grid;grid-template-columns: 3fr 1fr;border: 1px solid burlywood;margin-top: 30px;">
-                        <a data-fslightbox="mygalley" class="rounded-4" target="_blank" data-type="image"
-                            href={{product2.image.url}} style="margin-left:10px;">
-                            <img style="width: 100%; height: 150px; margin: auto;" class="rounded-4 fit"
-                                src={{product2.image.url}} />
-                        </a>
-                        <p style="color: red;font-size: xx-large;position: relative;bottom: -50%;">{{product2.price}}
-                        </p>
-                    </div>
-                    <div
-                        style="display: grid;grid-template-columns: 3fr 1fr;border: 1px solid burlywood;margin-top: 30px;">
-                        <a data-fslightbox="mygalley" class="rounded-4" target="_blank" data-type="image"
-                            href={{product1.image.url}} style="margin-left:10px;">
-                            <img style="width: 70%; height: 150px; margin: auto;" class="rounded-4 fit"
-                                src={{product1.image.url}} />
-                        </a>
-                        <p style="color: red;font-size: xx-large;position:relative;bottom: -50%;">{{product2.price}}</p>
-
-                    </div>
-                </div>
+                </a>
+                {% endfor %}
             </div>
         </div>
+
+        
+        
+        
     </div>
 
+    <!-- Uniqueness -->
     <div class="legacy" style="display: flex;flex-direction: column;margin: 0 0 45px 0;">
         <p style="font:40px solid black;">Better choices, Better prices</p>
         <ul style="display: flex;flex-direction: row;list-style: none;align-items: center;justify-content: baseline;">
@@ -118,519 +175,390 @@
         </ul>
     </div>
 
-    <!-- All categories -->
-    <div class="category-items" style="margin: 15px 0;">
-        <h2>Shop By Categories</h2>
-        <div class="categories"
-            style="height: 300px;display:grid;grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr; overflow: hidden;">
-            <div class="next-slick-slide next-slick-slide-active industry-row" style="outline: none;width: 150px;">
-                <a title="Home & Garden" class="home-dot-element" href="#" target="_blank"
-                    style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
-                    <div class="industry-item"
-                        style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
-                        <i class="fa fa-home" style="font-size: xx-large;"></i>
-                        <div class="industry-name">
-                            <span>Home & Garden</span>
-                        </div>
-                    </div>
-                </a>
-                <a title="Sports & Entertainment" class="home-dot-element" href="#" target="_blank"
-                    style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
-                    <div class="industry-item"
-                        style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
-                        <i class="fa fa-soccer-ball-o" style="font-size: xx-large;"></i>
-                        <div class="industry-name">
-                            <span>Sports & Entertainment</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="next-slick-slide next-slick-slide-active industry-row" style="outline: none;width: 150px;">
-                <a title="Home & Garden" class="home-dot-element" href="#" target="_blank"
-                    style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
-                    <div class="industry-item"
-                        style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
-                        <i class="fa fa-chain" style="font-size: xx-large;"></i>
-                        <div class="industry-name">
-                            <span>Industry & Machinery</span>
-                        </div>
-                    </div>
-                </a>
-                <a title="Sports & Entertainment" class="home-dot-element" href="#" target="_blank"
-                    style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
-                    <div class="industry-item"
-                        style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
-                        <i class="fa fa-paint-brush" style="font-size: xx-large;"></i>
-                        <div class="industry-name">
-                            <span>Beauty</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="next-slick-slide next-slick-slide-active industry-row" style="outline: none;width: 150px;">
-                <a title="Home & Garden" class="home-dot-element" href="#" target="_blank"
-                    style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
-                    <div class="industry-item"
-                        style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
-                        <i class="fa fa-gift" style="font-size: xx-large;"></i>
-                        <div class="industry-name">
-                            <span>Packaging & Printing</span>
-                        </div>
-                    </div>
-                </a>
-                <a title="Sports & Entertainment" class="home-dot-element" href="#" target="_blank"
-                    style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
-                    <div class="industry-item"
-                        style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
-                        <i class="fa fa-child" style="font-size: xx-large;"></i>
-                        <div class="industry-name">
-                            <span>Mother,Kids & Toys</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="next-slick-slide next-slick-slide-active industry-row" style="outline: none;width: 150px;">
-                <a title="Home & Garden" class="home-dot-element" href="#" target="_blank"
-                    style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
-                    <div class="industry-item"
-                        style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
-                        <i class="fa fa-diamond" style="font-size: xx-large;"></i>
-                        <div class="industry-name">
-                            <span>Jewelry,Watches & Accessorries</span>
-                        </div>
-                    </div>
-                </a>
-                <a title="Sports & Entertainment" class="home-dot-element" href="#" target="_blank"
-                    style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
-                    <div class="industry-item"
-                        style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
-                        <i class="fas fa-shoe-prints" style="font-size: xx-large;"></i>
-                        <div class="industry-name">
-                            <span>Shoes & Accessorries</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="next-slick-slide next-slick-slide-active industry-row" style="outline: none;width: 150px;">
-                <a title="Home & Garden" class="home-dot-element" href="#" target="_blank"
-                    style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
-                    <div class="industry-item"
-                        style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
-                        <i class="fa fa-car" style="font-size: xx-large;"></i>
-                        <div class="industry-name">
-                            <span>Vehicle Parts & Accessorries</span>
-                        </div>
-                    </div>
-                </a>
-                <a title="Sports & Entertainment" class="home-dot-element" href="#" target="_blank"
-                    style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
-                    <div class="industry-item"
-                        style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
-                        <i class="fas fa-chair" style="font-size: xx-large;"></i>
-                        <div class="industry-name">
-                            <span>Furniture</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="next-slick-slide next-slick-slide-active industry-row" style="outline: none;width: 150px;">
-                <a title="Home & Garden" class="home-dot-element" href="#" target="_blank"
-                    style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
-                    <div class="industry-item"
-                        style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
-                        <i class="fas fa-tools" style="font-size: xx-large;"></i>
-                        <div class="industry-name">
-                            <span>Tools & Hardware</span>
-                        </div>
-                    </div>
-                </a>
-                <a title="Sports & Entertainment" class="home-dot-element" href="#" target="_blank"
-                    style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
-                    <div class="industry-item"
-                        style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
-                        <i class="fas fa-suitcase" style="font-size: xx-large;"></i>
-                        <div class="industry-name">
-                            <span>Luggage,Bags & Cases</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="next-slick-slide next-slick-slide-active industry-row" style="outline: none;width: 150px;">
-                <a title="Home & Garden" class="home-dot-element" href="#" target="_blank"
-                    style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
-                    <div class="industry-item"
-                        style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
-                        <i class="fa fa-television" style="font-size: xx-large;"></i>
-                        <div class="industry-name">
-                            <span>Home Appliances</span>
-                        </div>
-                    </div>
-                </a>
-                <a title="Sports & Entertainment" class="home-dot-element" href="#" target="_blank"
-                    style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
-                    <div class="industry-item"
-                        style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
-                        <i class="fas fa-home" style="font-size: xx-large;"></i>
-                        <div class="industry-name">
-                            <span>Constructions & Real Estate</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="next-slick-slide next-slick-slide-active industry-row" style="outline: none;width: 150px;">
-                <a title="Home & Garden" class="home-dot-element" href="#" target="_blank"
-                    style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
-                    <div class="industry-item"
-                        style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
-                        <i class="fa fa-handshake-o" style="font-size: xx-large;"></i>
-                        <div class="industry-name">
-                            <span>Commercial Service Equipment</span>
-                        </div>
-                    </div>
-                </a>
-                <a title="Sports & Entertainment" class="home-dot-element" href="#" target="_blank"
-                    style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
-                    <div class="industry-item"
-                        style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
-                        <i class="fa fa-gear" style="font-size: xx-large;"></i>
-                        <div class="industry-name">
-                            <span>Vehicle Electronics & Accessories</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="next-slick-slide next-slick-slide-active industry-row" style="outline: none;width: 150px;">
-                <a title="Home & Garden" class="home-dot-element" href="#" target="_blank"
-                    style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
-                    <div class="industry-item"
-                        style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
-                        <i class="fas fa-spray-can" style="font-size: xx-large;"></i>
-                        <div class="industry-name">
-                            <span>Personal Car & HouseHold cleaning</span>
-                        </div>
-                    </div>
-                </a>
-                <a title="Sports & Entertainment" class="home-dot-element" href="#" target="_blank"
-                    style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
-                    <div class="industry-item"
-                        style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
-                        <i class="fa fa-truck" style="font-size: xx-large;"></i>
-                        <div class="industry-name">
-                            <span>Vehicle and Tranportation</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="next-slick-slide next-slick-slide-active industry-row" style="outline: none;width: 150px;">
-                <a title="Home & Garden" class="home-dot-element" href="#" target="_blank"
-                    style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
-                    <div class="industry-item"
-                        style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
-                        <i class="fa fa-lightbulb" style="font-size: xx-large;"></i>
-                        <div class="industry-name">
-                            <span>Lights & Lightening</span>
-                        </div>
-                    </div>
-                </a>
-                <a title="Sports & Entertainment" class="home-dot-element" href="#" target="_blank"
-                    style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
-                    <div class="industry-item"
-                        style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
-                        <i class="fa fa-gift style=" font-size: xx-large;"></i>
-                        <div class="industry-name">
-                            <span>Gifts & Cafts</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="next-slick-slide next-slick-slide-active industry-row" style="outline: none;width: 150px;">
-                <a title="Home & Garden" class="home-dot-element" href="#" target="_blank"
-                    style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
-                    <div class="industry-item"
-                        style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
-                        <i class="fas fa-notes-medical" style="font-size: xx-large;"></i>
-                        <div class="industry-name">
-                            <span>Health Care</span>
-                        </div>
-                    </div>
-                </a>
-                <a title="Sports & Entertainment" class="home-dot-element" href="#" target="_blank"
-                    style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
-                    <div class="industry-item"
-                        style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
-                        <i class="fas fa-plug" style="font-size: xx-large;"></i>
-                        <div class="industry-name">
-                            <span>Electrical Equipment & Supplies</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="next-slick-slide next-slick-slide-active industry-row" style="outline: none;width: 150px;">
-                <a title="Home & Garden" class="home-dot-element" href="#" target="_blank"
-                    style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
-                    <div class="industry-item"
-                        style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
-                        <i class="fas fa-sun" style="font-size: xx-large;"></i>
-                        <div class="industry-name">
-                            <span>Renewable Energy</span>
-                        </div>
-                    </div>
-                </a>
-                <a title="Sports & Entertainment" class="home-dot-element" href="#" target="_blank"
-                    style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
-                    <div class="industry-item"
-                        style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
-                        <i class="fas fa-print" style="font-size: xx-large;"></i>
-                        <div class="industry-name">
-                            <span>School & Office Supplies</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="next-slick-slide next-slick-slide-active industry-row" style="outline: none;width: 150px;">
-                <a title="Home & Garden" class="home-dot-element" href="#" target="_blank"
-                    style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
-                    <div class="industry-item"
-                        style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
-                        <i class="fa fa-binoculars" style="font-size: xx-large;"></i>
-                        <div class="industry-name">
-                            <span>Construction & Building Mechinery</span>
-                        </div>
-                    </div>
-                </a>
-                <a title="Sports & Entertainment" class="home-dot-element" href="#" target="_blank"
-                    style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
-                    <div class="industry-item"
-                        style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
-                        <i class="fa fa-soccer-ball-o" style="font-size: xx-large;"></i>
-                        <div class="industry-name">
-                            <span>Sports & Entertainment</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="next-slick-slide next-slick-slide-active industry-row" style="outline: none;width: 150px;">
-                <a title="Home & Garden" class="home-dot-element" href="#" target="_blank"
-                    style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
-                    <div class="industry-item"
-                        style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
-                        <i class="fa-thin fa-car-battery" style="font-size: xx-large;"></i>
-                        <div class="industry-name">
-                            <span>Electtronic Components & Telecommunicatin</span>
-                        </div>
-                    </div>
-                </a>
-                <a title="Sports & Entertainment" class="home-dot-element" href="#" target="_blank"
-                    style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
-                    <div class="industry-item"
-                        style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
-                        <i class="fas fa-mug-hot" style="font-size: xx-large;"></i>
-                        <div class="industry-name">
-                            <span>Food & Beverage</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="next-slick-slide next-slick-slide-active industry-row" style="outline: none;width: 150px;">
-                <a title="Home & Garden" class="home-dot-element" href="#" target="_blank"
-                    style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
-                    <div class="industry-item"
-                        style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
-                        <i class="fa fa-home" style="font-size: xx-large;"></i>
-                        <div class="industry-name">
-                            <span>Home & Garden</span>
-                        </div>
-                    </div>
-                </a>
-                <a title="Sports & Entertainment" class="home-dot-element" href="#" target="_blank"
-                    style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
-                    <div class="industry-item"
-                        style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
-                        <i class="fa fa-soccer-ball-o" style="font-size: xx-large;"></i>
-                        <div class="industry-name">
-                            <span>Sports & Entertainment</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="next-slick-slide next-slick-slide-active industry-row" style="outline: none;width: 150px;">
-                <a title="Home & Garden" class="home-dot-element" href="#" target="_blank"
-                    style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
-                    <div class="industry-item"
-                        style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
-                        <i class="fa fa-home" style="font-size: xx-large;"></i>
-                        <div class="industry-name">
-                            <span>Home & Garden</span>
-                        </div>
-                    </div>
-                </a>
-                <a title="Sports & Entertainment" class="home-dot-element" href="#" target="_blank"
-                    style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
-                    <div class="industry-item"
-                        style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
-                        <i class="fa fa-soccer-ball-o" style="font-size: xx-large;"></i>
-                        <div class="industry-name">
-                            <span>Sports & Entertainment</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="next-slick-slide next-slick-slide-active industry-row" style="outline: none;width: 150px;">
-                <a title="Home & Garden" class="home-dot-element" href="#" target="_blank"
-                    style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
-                    <div class="industry-item"
-                        style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
-                        <i class="fa fa-home" style="font-size: xx-large;"></i>
-                        <div class="industry-name">
-                            <span>Home & Garden</span>
-                        </div>
-                    </div>
-                </a>
-                <a title="Sports & Entertainment" class="home-dot-element" href="#" target="_blank"
-                    style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
-                    <div class="industry-item"
-                        style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
-                        <i class="fa fa-soccer-ball-o" style="font-size: xx-large;"></i>
-                        <div class="industry-name">
-                            <span>Sports & Entertainment</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="next-slick-slide next-slick-slide-active industry-row" style="outline: none;width: 150px;">
-                <a title="Home & Garden" class="home-dot-element" href="#" target="_blank"
-                    style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
-                    <div class="industry-item"
-                        style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
-                        <i class="fa fa-home" style="font-size: xx-large;"></i>
-                        <div class="industry-name">
-                            <span>Home & Garden</span>
-                        </div>
-                    </div>
-                </a>
-                <a title="Sports & Entertainment" class="home-dot-element" href="#" target="_blank"
-                    style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
-                    <div class="industry-item"
-                        style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
-                        <i class="fa fa-soccer-ball-o" style="font-size: xx-large;"></i>
-                        <div class="industry-name">
-                            <span>Sports & Entertainment</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="next-slick-slide next-slick-slide-active industry-row" style="outline: none;width: 150px;">
-                <a title="Home & Garden" class="home-dot-element" href="#" target="_blank"
-                    style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
-                    <div class="industry-item"
-                        style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
-                        <i class="fa fa-home" style="font-size: xx-large;"></i>
-                        <div class="industry-name">
-                            <span>Home & Garden</span>
-                        </div>
-                    </div>
-                </a>
-                <a title="Sports & Entertainment" class="home-dot-element" href="#" target="_blank"
-                    style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
-                    <div class="industry-item"
-                        style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
-                        <i class="fa fa-soccer-ball-o" style="font-size: xx-large;"></i>
-                        <div class="industry-name">
-                            <span>Sports & Entertainment</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="next-slick-slide next-slick-slide-active industry-row" style="outline: none;width: 150px;">
-                <a title="Home & Garden" class="home-dot-element" href="#" target="_blank"
-                    style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
-                    <div class="industry-item"
-                        style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
-                        <i class="fa fa-home" style="font-size: xx-large;"></i>
-                        <div class="industry-name">
-                            <span>Home & Garden</span>
-                        </div>
-                    </div>
-                </a>
-                <a title="Sports & Entertainment" class="home-dot-element" href="#" target="_blank"
-                    style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
-                    <div class="industry-item"
-                        style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
-                        <i class="fa fa-soccer-ball-o" style="font-size: xx-large;"></i>
-                        <div class="industry-name">
-                            <span>Sports & Entertainment</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="next-slick-slide next-slick-slide-active industry-row" style="outline: none;width: 150px;">
-                <a title="Home & Garden" class="home-dot-element" href="#" target="_blank"
-                    style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
-                    <div class="industry-item"
-                        style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
-                        <i class="fa fa-home" style="font-size: xx-large;"></i>
-                        <div class="industry-name">
-                            <span>Home & Garden</span>
-                        </div>
-                    </div>
-                </a>
-                <a title="Sports & Entertainment" class="home-dot-element" href="#" target="_blank"
-                    style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
-                    <div class="industry-item"
-                        style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
-                        <i class="fa fa-soccer-ball-o" style="font-size: xx-large;"></i>
-                        <div class="industry-name">
-                            <span>Sports & Entertainment</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="next-slick-slide next-slick-slide-active industry-row" style="outline: none;width: 150px;">
-                <a title="Home & Garden" class="home-dot-element" href="#" target="_blank"
-                    style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
-                    <div class="industry-item"
-                        style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
-                        <i class="fa fa-home" style="font-size: xx-large;"></i>
-                        <div class="industry-name">
-                            <span>Home & Garden</span>
-                        </div>
-                    </div>
-                </a>
-                <a title="Sports & Entertainment" class="home-dot-element" href="#" target="_blank"
-                    style="border: 1px solid black;border-radius:50%;width: 130px;height:130px;display:flex;align-items: center;justify-content: center;text-decoration: none;color: black;margin-top: 15px;">
-                    <div class="industry-item"
-                        style="display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;">
-                        <i class="fa fa-soccer-ball-o" style="font-size: xx-large;"></i>
-                        <div class="industry-name">
-                            <span>Sports & Entertainment</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </div>
-
+    <!-- inherit from categories.html -->
+    {% include "categories.html" %}
+    
+</div>
     {% endblock %}
-</div>
+<!-- </div> -->
 
 
-{% block landingProducts %}
-<div class="categories" style="display: flex; flex-direction: column;">
-    <h1>Products</h1>
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr 1fr 1fr;">
-        {% for product in products %}
-        <div class="card" style="margin: 8px;">
-            <a href="{% url 'product_details' product.id %}" style="text-decoration: none;">
-                <img class="card-img-top" style="height: 208px;width:208px;border-radius: 8px;position: relative;"
-                    src={{product.image.url}} alt="Card image cap">
-                <div class="card-body"
-                    style="font-size:12px;text-overflow: ellipsis;width: 100%;white-space:nowrap;overflow: hidden;">
-                    <h5 class="card-title" style="color:black;font-weight: 400;">{{product.name}}</h5>
-                    <h2 style="color:red;font-size: 20px;"><span>$</span>{{product.price}}</h2>
-                </div>
-            </a>
+
+{% block landingProducts %}  
+
+<!-- swipers Section -->
+<style>
+    .btn{
+        height: 60px;
+        width: 30px;
+        background-color: black;
+        opacity: 0.4;
+        position: absolute;
+        top: 30%;
+    }
+    #swipers{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        justify-content: center;
+        width:300px;
+        height: 400px; 
+        margin: 30px 0;
+        border-radius: 2rem;
+        background-color: blanchedalmond;
+
+    }
+    #swipers .first{
+        font-size: 1.5rem;
+        font-weight: bolder;
+        color: red;
+    }
+    #swipers .second{
+        font-size: 1rem;
+        margin-top: -1.25rem;
+
+    }
+    .swiper_inner{
+        height: 310px; 
+        margin: 1.5rem 0;
+
+    }
+    .container_swipers{
+        margin: 0 2rem;
+    }
+    .carousel-item{
+        height: 350px;
+    }
+    .carousel-item img{
+        border-radius: 2rem;
+        margin-left: 1.5rem;
+        width: 250px;
+        height: 250px;
+        position: relative;
+    }
+    .caption{
+        position: absolute;
+        bottom: 10%;
+    }
+    .caption .now{
+        font-size: 1.25rem;
+        font-weight: bolder;
+        color:red;
+        margin-left:1rem
+    }
+    .caption .before{
+        color: gray;
+    }
+    .get-in{
+        background-color: beige;
+        border-radius: 2rem;
+        width: 300px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .get-in button{
+        margin-top: 1rem ;
+        padding: 0.3rem 0.5rem;
+        border-radius: 2rem;
+        width: 8rem;
+        font-size: 1.5rem;
+        font-weight:bold;
+    }
+    .get-in .register{
+        background-color: black;
+        color: whitesmoke;
+    }
+    .exhibition{
+        display: flex;
+        flex-direction: row;
+    }
+    .super-btn{
+        height: 60px;
+        width: 30px;
+        background-color: black;
+        opacity: 0.4;
+        position: absolute;
+        top: 30%;
+    }
+
+    .super-deals{
+        background-color: rgb(247, 243, 237);
+        border-radius: 2rem;
+        width: 30%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .inner{
+        background-color: white;
+        width:90%;
+        height: 85%;
+        border-radius: 2rem;
+    }
+    #super-container{
+        /* display: flex; */
+        /* flex-direction: column; */
+        /* align-items: center; */
+        /* position: relative; */
+        /* justify-content: center; */
+        width:300px;
+        height: 400px; 
+        margin: 30px 1.5rem;
+        border-radius: 2rem;
+        /* background-color: red; */
+
+    }
+    .super-deals p{
+        font-size: 2rem;
+        font-weight: bolder;
+    }
+    .super-deals .before{
+        font-size: 1rem;
+        background-color: red;
+
+    }
+    
+    .super-item{
+        height: 350px;
+    }
+    .super-item img{
+        border-radius: 2rem;
+        margin-left: 1.5rem;
+        width: 250px;
+        height: 250px;
+    }
+    
+    .super-caption-main .now{
+        font-size: 1.25rem;
+        font-weight: bolder;
+        color:red;
+        margin-left:4rem
+    }
+    .super-caption-main .before{
+        background-color: rgb(244, 108, 108);
+        margin-left: 0.5rem;
+        border-radius: 1rem;
+        padding: 0 0.3rem;
+    }
+    .super-caption .before{
+        background-color: rgb(244, 108, 108);
+        margin-left: 0.5rem;
+        border-radius: 1rem;
+        padding: 0 0.3rem;
+    }
+    #super-min{
+        display: flex;
+        /* align-items: center; */
+        justify-content: center;
+        width:132px;
+        height:132px; 
+        margin: 30px 0;
+        border-radius: 0.3rem;
+        background-color: beige;
+        border-radius: 0.5rem;
+
+        /* border-radius: 2rem; */
+    }
+    #super-min span{
+        font-size: 0.8rem;
+    }
+    .super-last{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 2rem;
+        margin-top: -130px;
+        gap: 1rem;
+    }
+    
+    #super-min img{
+        border-radius: 1rem;
+        margin-left: 1.5rem;
+        width: 130px;
+        height: 130px;
+        margin-left: -1px;
+
+    }
+
+    /* bulk purchase style */
+    .bulk{
+        background-color: rgb(244, 245, 248);
+        border-radius: 2rem;
+        width: 42%;
+        display: flex;
+        justify-content: center;
+        
+    }
+    .bulk-body{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        width: 100%;
+    }
+    .bulk-item img{
+        width: 160px;
+        height: 160px;
+        border-radius: 0.5rem;
+
+    }
+
+</style>
+
+<div class="exhibition">
+    <div class="container_swipers">
+
+        <div class="get-in">
+            <div class="btn-btn">
+                <button class="register">Register</button>
+                <button class="sign-in">Sign in</button>
+            </div>
+            <div class="mt-3" style="font-size: xx-large;">
+                <p style="font-size: 16px;"><span> or continue with:</span></p>
+                <a href="" class="text-white me-4">
+                    <i class="fab fa-google" style="color: green;"></i>
+                </a>
+                <a href="" class="text-white me-4">
+                    <i class="fab fa-facebook-f" style="color: white;background-color: rgb(106, 106, 190);border-radius: 0.5rem;"></i>
+                </a>
+                <a href="" class="text-white me-4">
+                    <i class="fab fa-twitter" style="color: white;background-color: lightskyblue;border-radius: 0.5rem;"></i>
+                </a>
+                
+                <a href="" class="text-white me-4">
+                    <i class="fab fa-linkedin" style="color: rgb(62, 62, 5);"></i>
+                </a>
+                
+            </div>
         </div>
-        {% endfor %}
+
+        <div id="swipers" class="deals carousel slide" data-bs-ride="true">
+            <span class="first">Welcome Deal</span><br>
+            <span class="second">Your exclusive price</span>
+            <div class="swiper_inner carousel-inner" >
+                <div class="carousel-item active">
+                        <img src="{% static 'images/car_Audio.webp' %}" class="d-block w-30" alt="..." >
+                        <div class="caption carousel-caption d-none d-md-block">
+                            <span class="now">GHS90.45</span>
+                            <span class="before"><s> GHS105.22</s></span>
+                        </div>
+                </div>
+                <div class="carousel-item">
+                        <img src="{% static 'images/1(1).jpg' %}" class="d-block w-40" alt="..." >
+                        <div class="caption carousel-caption d-none d-md-block">
+                            <span class="now">GHS150.45</span>
+                            <span class="before" ><s> GHS205.22</s></span>
+                        </div>
+                </div>
+                <div class="carousel-item">
+                        <img src="{% static 'images/game1.jpg' %}" class="d-block w-30" alt="...">
+                        <div class="caption carousel-caption d-none d-md-block">
+                            <span class="now">GHS90.45</span>
+                            <span class="before"><s> GHS105.22</s></span>
+                        </div>
+                </div>
+                <button class="btn carousel-control-prev" type="button" data-bs-target="#swipers"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="btn carousel-control-next" type="button" data-bs-target="#swipers"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+            </div>
+        </div>
+        <img src="{% static 'images/free.png' %}" style="width: 90%;height: 90px;border-radius: 1rem;">
+
+    </div>
+
+    <!-- super deals  -->
+    <div class="super-deals">
+        <p>
+            <span class="first">Super</span> 
+            <span style="color: red;margin-left: -0.7rem;">Deals</span>
+        </p>
+        <div class="inner">
+            <div id="super-container" class="deals">
+                    <div class="super-item">
+                            <img src="{% static 'images/game1.jpg' %}" class="d-block w-30" alt="..."  >
+                            <div class="super-caption-main">
+                                <span class="now">GHS540.45</span>
+                                <span class="before"><em> -25%</em></span>
+                            </div>
+                    </div>
+            </div>
+            <div class="super-last">
+                <div id="super-min" class="deals">
+                        <div class="super-item">
+                                <img src="{% static 'images/1(1).jpg' %}" class="d-block w-30" alt="..." >
+                                <div class="super-caption">
+                                    <span class="now">GHS74.45</span>
+                                    <span class="before"><em> -20%</em></span>
+                                </div>
+                        </div>
+                </div>
+                <div id="super-min" class="deals">
+                        <div class="super-item">
+                                <img src="{% static 'images/car_Audio.webp' %}" class="d-block w-30" alt="..." >
+                                <div class="super-caption">
+                                    <span class="now">GHS55.44</span>
+                                    <span class="before"><em> -30%</em></span>
+                                </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- bulk purchases -->
+    <div class="bulk">
+        <div class="bulk-constainer" style="margin: 30px 0;width: 100%;">
+            <p style="margin-left: 30px; font-size: 30px;font-weight: 900;background-color: rgb(255, 145, 0);border-radius: 0.5rem;">
+                <span >Buy In Bulk</span> <br>
+                <span style="font-size: 18px;">WholeSale Best Prices For You!</span>
+            </p>
+            <div class="bulk-body">
+                <div class="bulk-item">
+                        <img src="{% static 'images/car_Audio.webp' %}"  >
+                        <div class="bulk-details d-none d-md-block">
+                            <span style="font-weight: 800;">Car Audio Jack</span><br>
+                            <span>GHS 90.45</span>
+                            <span><s> GHS 105.22</s></span>
+                        </div>
+                </div>
+                <div class="bulk-item">
+                        <img src="{% static 'images/1(1).jpg' %}"  >
+                        <div class="bulk-details d-none d-md-block">
+                            <span style="font-weight: 800;">High Quality laptop</span><br>
+                            <span>GHS 150.45</span>
+                            <span><s> GHS 205.22</s></span>
+                        </div>
+                </div>
+                <div class="bulk-item">
+                        <img src="{% static 'images/game1.jpg' %}"  >
+                        <div class="bulk-details d-none d-md-block">
+                            <span style="font-weight: 800;">Portable Game Pad</span><br>
+                            <span>GHS 90.45</span>
+                            <span><s> GHS 105.22</s></span>
+                        </div>
+                </div>
+            </div>
+            <div class="banner" style="display: flex;flex-direction:column; justify-content: center;align-items: center;">
+                <img src="{% static 'images/bulk_order.png' %}"  style="width: 100%;height: 170px;">
+                <img src="{% static 'images/badge1.png' %}" style="width: 90%;height: 140px;border-radius: 1rem;margin-top: 2rem;">
+            </div>
+        </div>
+        </div>
     </div>
 </div>
-{% endblock%}
+
+<!-- all products -->
+{% include "product_list.html" %}
+
+
+{% endblock %}

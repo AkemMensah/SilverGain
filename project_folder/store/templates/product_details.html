@@ -1,9 +1,8 @@
 {% extends 'base.html' %}
 
-{% block content%}
+{% block content %}
 <header style="margin: 30px 120px;">
-    <h1>{{product.name}}</h1>
-
+    <h1>{{ product.name }}</h1>
 </header>
 
 <!-- content -->
@@ -12,44 +11,33 @@
         <div class="row gx-5">
             <aside class="col-lg-6">
                 <div class="border rounded-4 mb-3 d-flex justify-content-center">
-                    <a data-fslightbox="mygalley" class="rounded-4" target="_blank" data-type="image"
-                        href={{product.image.url}}>
-                        <img style="max-width: 100%; max-height: 100vh; margin: auto;" class="rounded-4 fit"
-                            src={{product.image.url}} />
+                    <a data-fslightbox="mygalley" class="rounded-4" target="_blank" data-type="image" 
+                       href="{% if product.image_file and product.image_file.url %}{{ product.image_file.url }}{% elif product.image_url %}{{ product.image_url }}{% endif %}">
+                        <img style="max-width: 100%; max-height: 100vh; margin: auto;" 
+                             class="rounded-4 fit" 
+                             src="{% if product.image_file and product.image_file.url %}{{ product.image_file.url }}{% elif product.image_url %}{{ product.image_url }}{% endif %}" 
+                             alt="{{ product.name }}">
                     </a>
                 </div>
-
-                <!-- thumbs-wrap.// -->
-                <!-- gallery-wrap .end// -->
             </aside>
+
             <main class="col-lg-6">
                 <div class="ps-lg-3">
                     <h4 class="title text-dark">
-                        {{product.name}}
+                        {{ product.name }}
                         <p>Color: black</p>
                         <div class="d-flex justify-content-center mb-3">
+                            {% for image in product.images.all %}
                             <a data-fslightbox="mygalley" class="border mx-1 rounded-2" target="_blank"
-                                data-type="image" href={{product.image.url}} class="item-thumb">
-                                <img width="60" height="60" class="rounded-2" src={{product.image.url}} />
+                               data-type="image" href="{% if image.file and image.file.url %}{{ image.file.url }}{% elif image.url %}{{ image.url }}{% endif %}" 
+                               class="item-thumb">
+                                <img width="60" height="60" class="rounded-2" 
+                                     src="{% if image.file and image.file.url %}{{ image.file.url }}{% elif image.url %}{{ image.url }}{% endif %}" />
                             </a>
-                            <a data-fslightbox="mygalley" class="border mx-1 rounded-2" target="_blank"
-                                data-type="image" href={{product.image.url}} class="item-thumb">
-                                <img width="60" height="60" class="rounded-2" src={{product.image.url}} />
-                            </a>
-                            <a data-fslightbox="mygalley" class="border mx-1 rounded-2" target="_blank"
-                                data-type="image" href={{product.image.url}} class="item-thumb">
-                                <img width="60" height="60" class="rounded-2" src={{product.image.url}} />
-                            </a>
-                            <a data-fslightbox="mygalley" class="border mx-1 rounded-2" target="_blank"
-                                data-type="image" href={{product.image.url}} class="item-thumb">
-                                <img width="60" height="60" class="rounded-2" src={{product.image.url}} />
-                            </a>
-                            <a data-fslightbox="mygalley" class="border mx-1 rounded-2" target="_blank"
-                                data-type="image" href={{product.image.url}} class="item-thumb">
-                                <img width="60" height="60" class="rounded-2" src={{product.image.url}} />
-                            </a>
+                            {% endfor %}
                         </div>
                     </h4>
+
                     <div class="d-flex flex-row my-3">
                         <div class="text-warning mb-1 me-2">
                             <i class="fa fa-star"></i>
@@ -58,29 +46,26 @@
                             <i class="fa fa-star"></i>
                             <i class="fas fa-star-half-alt"></i>
                             {% if product.average_review %}
-                            <span class="ms-1">
-                                {{product.average_review}} stars
-                            </span>
-                            
+                            <span class="ms-1">{{ product.average_review }} stars</span>
                             {% endif %}
                         </div>
-                        <span class="text-muted"><i class="fas fa-shopping-basket fa-sm mx-1"></i>{{product.quantity}}
-                            Products</span>
+                        <span class="text-muted"><i class="fas fa-shopping-basket fa-sm mx-1"></i>{{ product.quantity }} Products</span>
                         <span class="text-success ms-2">In stock</span>
                     </div>
 
                     <div class="mb-3">
-                        <span class="h5">$ {{product.price}}</span>
+                        <span class="h5">$ {{ product.price }}</span>
                     </div>
 
-                    <p>
-                        {{Product.summary}}
-                    </p>
-                    <a href="{% url 'payment' %}?product_id={{product.id}}&quantity={{quantity}}" class="btn btn-warning shadow-0"> Buy now </a>
-                    <a href="{%url 'add_to_cart' product.id %}" class="btn btn-primary shadow-0"> <i
-                            class="me-1 fa fa-shopping-basket"></i> Add to cart </a>
-                    <a href="#" class="btn btn-light border border-secondary py-2 icon-hover px-3"> <i
-                            class="me-1 fa fa-heart fa-lg"></i> Save </a>
+                    <p>{{ product.summary }}</p>
+                    <a href="{% url 'payment' %}?product_id={{ product.id }}&quantity={{ quantity }}" 
+                       class="btn btn-warning shadow-0"> Buy now </a>
+                    <a href="{% url 'add_to_cart' product.id %}" class="btn btn-primary shadow-0">
+                        <i class="me-1 fa fa-shopping-basket"></i> Add to cart
+                    </a>
+                    <a href="#" class="btn btn-light border border-secondary py-2 icon-hover px-3">
+                        <i class="me-1 fa fa-heart fa-lg"></i> Save
+                    </a>
                 </div>
             </main>
         </div>
@@ -94,47 +79,32 @@
         <div class="row gx-4">
             <div class="col-lg-8 mb-4">
                 <div class="border rounded-2 px-3 py-2 bg-white">
-                    
                     <div class="tab-content" id="ex1-content">
-                        <div class="tab-pane fade show active" id="ex1-pills-1" role="tabpanel"
-                            aria-labelledby="ex1-tab-1">
-                            <p>
-                                {{product.description}}
-                            </p>
-
-
+                        <div class="tab-pane fade show active" id="ex1-pills-1" role="tabpanel" aria-labelledby="ex1-tab-1">
+                            <p>{{ product.description }}</p>
                         </div>
-
                     </div>
-                    <!-- Pills content -->
                 </div>
             </div>
 
             <hr />
             <h5 class="card-title">Similar items</h5>
-            <div class="col-lg-4">
                 <div class="px-0 border rounded-2 shadow-0">
-                    <div class="card">
-                        <div class="card-body">
+                        <div class="card-body d-flex flex-row">
                             {% for item in similar %}
-                            <div class="d-flex mb-3">
-                                <a href="{% url 'product_details' item.id %}" class="me-3">
-                                    <img src={{item.image.url}} style="min-width: 96px; height: 96px;"
-                                        class="img-md img-thumbnail" />
-                                </a>
+                            <div class="d-flex mb-3 flex-column text-center img-md img-thumbnail mt-3" style="margin: 10px; width: 15%; ">
+                                <a href="{% url 'product_details' item.id %}" class="me-3" style="text-decoration: none;color:black">
+                                    <img src="{% if item.image_file and item.image_file.url %}{{ item.image_file.url }}{% elif item.image_url %}{{ item.image_url }}{% endif %}" style="min-width: 100px; height: 100px;"  />
                                 <div class="info">
-                                    <a href="{% url 'product_details' item.id %}" class="nav-link mb-1">
-                                        {{item.name}}
-                                    </a>
-                                    <strong class="text-dark">$ {{item.price}}</strong>
+                                    <p><span> {{ item.name }}</span><br> 
+                                        <span><strong class="text-dark">$ {{ item.price }}</strong></span>
+                                    </p>
+                                </a>
                                 </div>
                             </div>
-                            {% endfor%}
-
+                            {% endfor %}
                         </div>
-                    </div>
                 </div>
-            </div>
         </div>
     </div>
 </section>

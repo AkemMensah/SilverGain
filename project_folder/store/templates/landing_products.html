@@ -1,0 +1,93 @@
+
+
+<!-- Not In Use -->
+
+<div class="col-md-5 my-auto" style="background-color: yellow;height: 45px;">
+    <form role="search" style="height: 40px;">
+        <div class="input-group bg-white" style="height: 45px;">
+            <input type="search" placeholder="Search your product" class="form-control" style="height: 45px;"/>
+            <button class="btn bg-white" type="submit" style="height: 45px;background-color:blue;">
+                <i class="fa fa-search h-20" style="height: 30px;" ></i>
+            </button>
+        </div>
+    </form>
+</div>
+
+
+
+<div class="col-md-5 my-auto">
+    <form role="search">
+        <div class="input-group bg-white">
+            <input type="search" placeholder="Search your product" class="form-control" />
+            <button class="btn bg-white" type="submit">
+                <i class="fa fa-search h-20"></i>
+            </button>
+        </div>
+    </form>
+</div>
+
+
+<div class="occasion" style="height: 100%;">
+    <h2>Anniversary Sale</h2>
+    <div style="height: 100%;display:flex;flex-direction: row;margin-top: 30px;">
+        <div class="card" style="margin: 12px;height: 80%;width: 40%;display: flex;flex-direction: column;">
+            <div
+                style="display: grid;grid-template-columns: 3fr 1fr;border: 1px solid burlywood;margin-top: 30px;">
+                <a data-fslightbox="mygalley" class="rounded-4" target="_blank" data-type="image"
+                    href={{product1.image.url}} style="margin-left:10px;">
+                    <img style="width: 70%; height: 150px; margin: auto;" class="rounded-4 fit"
+                        src={{product1.image.url}} />
+                </a>
+                <p style="color: red;font-size: xx-large;position:relative;bottom: -50%;">{{product2.price}}</p>
+
+            </div>
+            <div
+                style="display: grid;grid-template-columns: 3fr 1fr;border: 1px solid burlywood;margin-top: 30px;">
+                <a data-fslightbox="mygalley" class="rounded-4" target="_blank" data-type="image"
+                    href={{product2.image.url}} style="margin-left:10px;">
+                    <img style="width: 70%; height: 150px; margin: auto;" class="rounded-4 fit"
+                        src={{product2.image.url}} />
+                </a>
+                <p style="color: red;font-size: xx-large;position:relative;bottom: -50%;">{{product2.price}}</p>
+            </div>
+        </div>
+        <div class="card" style="margin: 8px;height: 80%;width: 40%;display: flex;flex-direction: column;">
+
+            <div
+                style="display: grid;grid-template-columns: 3fr 1fr;border: 1px solid burlywood;margin-top: 30px;">
+                <a data-fslightbox="mygalley" class="rounded-4" target="_blank" data-type="image"
+                    href={{product2.image.url}} style="margin-left:10px;">
+                    <img style="width: 100%; height: 150px; margin: auto;" class="rounded-4 fit"
+                        src={{product2.image.url}} />
+                </a>
+                <p style="color: red;font-size: xx-large;position: relative;bottom: -50%;">{{product2.price}}
+                </p>
+            </div>
+            <div
+                style="display: grid;grid-template-columns: 3fr 1fr;border: 1px solid burlywood;margin-top: 30px;">
+                <a data-fslightbox="mygalley" class="rounded-4" target="_blank" data-type="image"
+                    href={{product1.image.url}} style="margin-left:10px;">
+                    <img style="width: 70%; height: 150px; margin: auto;" class="rounded-4 fit"
+                        src={{product1.image.url}} />
+                </a>
+                <p style="color: red;font-size: xx-large;position:relative;bottom: -50%;">{{product2.price}}</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="occasion">
+    <h2>Anniversary Sale</h2>
+    <div class="occasion-container">
+        {% for product in products|slice:":4" %}  <!-- Limit to the first 4 products -->
+        <div class="product-grid">
+            <a data-fslightbox="mygalley" class="product-link rounded-4" target="_blank" data-type="image" href="{{ product.image.url }}">
+                <img class="product-image rounded-4 fit" src="{{ product.image.url }}" />
+            </a>
+            <p class="product-price">{{ product.price }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>

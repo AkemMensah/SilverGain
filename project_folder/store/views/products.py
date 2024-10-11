@@ -1,6 +1,7 @@
-# from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
-from store.models import Products
+import requests 
+from store.models import Products, Category
 from store.models import Cart
 
 # @login_required

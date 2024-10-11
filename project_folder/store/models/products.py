@@ -4,7 +4,8 @@ from django.db.models import Avg
 
 # Create your models here.
 class Products (models.Model):
-    image = models.ImageField(upload_to='products/')
+    image_url = models.URLField(max_length=500, blank=True, null=True)  # For external URLs
+    image_file = models.ImageField(upload_to='products/', blank=True, null=True)  # For local uploads
     name = models.CharField(max_length=60)
     price = models.DecimalField(max_digits=5, default=0.00, decimal_places=2)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, default=1)
