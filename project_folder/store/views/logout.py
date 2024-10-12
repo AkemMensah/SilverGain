@@ -3,4 +3,4 @@ from django.shortcuts import redirect
 
 def user_logout(request):
     logout(request)
-    return redirect('/landing_page')
+    return redirect('/')
