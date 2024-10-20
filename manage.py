@@ -24,3 +24,6 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+
+from SilverGian.wsgi import app
